@@ -1,0 +1,120 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+.mobile {
+    display: none;
+}
+.col-1  { width: 8.33%; }
+.col-2  { width: 16.66%; }
+.col-3  { width: 25%; }
+.col-4  { width: 33.33%; }
+.col-5  { width: 41.66%; }
+.col-6  { width: 50%; }
+.col-7  { width: 58.33%; }
+.col-8  { width: 66.66%; }
+.col-9  { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.66%; }
+.col-12 { width: 100%; }
+
+
+[class*="col-"] {
+  float: left;
+}
+.square{height:100%; border: solid red; padding: 5px;}
+.mainSquare33{height:33%; border:none ; padding: 5px;}
+
+.square2{height:100%; border: none; padding: 5px;}
+.square3{height: 100%; border: solid red;} /*center square3*/
+
+/* 
+   We reduce each box's width by the total gap so four boxes fit on one row. */
+.square2 .square3{
+  width: calc((100% - 15px) / 4);
+  float: left;
+  margin-right: 5px;
+}
+.square2 .square3:last-child{
+  margin-right: 0;
+}
+.square33{height:100%; border:none; padding: 5px; margin: auto;} /*center square33*/
+.square66{height:100%; border: none; padding: 5px; margin: auto;} /*center square66*/
+.inner50{height:50%; border: solid red; margin-bottom:5px;}
+.inner50:last-child{margin-bottom:0; height: calc(50% - 5px);}
+.inner66{height:100%; border: solid red;}
+
+.bottomSquare{height:100%; border:none; padding: 5px;}
+.bottomSquare1{height:100%; border: solid red;}
+.bottomSquare1:nth-child(1){width: calc(58.33% - 2.5px);}
+.bottomSquare1:nth-child(2){width: calc(41.66% - 2.5px); margin-left: 5px;}
+
+.mobile-red-square {
+    /* Uses existing styles, just for clarity in HTML */
+    border: solid red;
+    padding: 5px; 
+    height: auto; /* Allow height to adjust to content */
+    margin: 10px; /* Add some space around the main square */
+}
+
+.mobile-inner-box {
+    width: 100%; /* Full width */
+    height: 100%; /* A fixed height for visibility */
+    border: solid red;
+    margin-bottom: 5px;
+    background-color: #ffeaea; /* Light red background for better visual separation */
+}
+
+/* --- MEDIA QUERY MODIFICATION --- */
+@media only screen and (max-width:750px) {
+    /* 1. Reset the display: none for the container we want to use */
+    .desktop {
+    display: none;
+}
+.mobile {
+    display: block;
+}
+    
+    .square { 
+        display: block !important; /* Force the main square to be visible */
+        float: none; /* Ensure it takes up full width if it was a float */
+        width: 100%; /* Ensure it's full width */
+        height: auto; /* Let the height be determined by the inner content */
+        border: none; /* Remove the outer red border for the container if needed, or keep it. I'll remove it here to only show the inner red border. */
+        padding: 0;
+    }
+
+    /* 2. Hide everything else as per your original intent */
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        display: block; /* Important to override the float:left */
+        float: none; 
+        width: 100%; /* Force all columns to full width and stack */
+    }
+    
+    .inner50, .square66, .inner66, .bottomSquare, .bottomSquare1, .square2, .square3 {
+        display: none !important; /* Keep other elements hidden */
+    }
+
+    /* 3. Make the NEW containers visible and styled as requested */
+    .mobile-red-square {
+        display: block !important;
+        /* The requested styling: 1 big red square */
+        border: solid red 5px; 
+        height: auto; /* Auto height based on content */
+        width: 90%; /* A bit of margin on the sides */
+        margin: 20px auto; /* Center it horizontally */
+        padding: 10px;
+    }
+
+    .mobile-inner-box {
+        /* The requested styling: 4 small wide squares inside, under each other */
+        display: block !important;
+        width: 100%;
+        height: 50px; 
+        margin-bottom: 10px;
+    }
+}
