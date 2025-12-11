@@ -6,9 +6,9 @@ html, body {
 * {
   box-sizing: border-box;
 }
-.mobile {
-    display: none;
-}
+
+.mobile{ display: none; }
+
 .col-1  { width: 8.33%; }
 .col-2  { width: 16.66%; }
 .col-3  { width: 25%; }
@@ -53,68 +53,56 @@ html, body {
 .bottomSquare1:nth-child(1){width: calc(58.33% - 2.5px);}
 .bottomSquare1:nth-child(2){width: calc(41.66% - 2.5px); margin-left: 5px;}
 
-.mobile-red-square {
-    /* Uses existing styles, just for clarity in HTML */
-    border: solid red;
-    padding: 5px; 
-    height: auto; /* Allow height to adjust to content */
-    margin: 10px; /* Add some space around the main square */
-}
 
-.mobile-inner-box {
-    width: 100%; /* Full width */
-    height: 100%; /* A fixed height for visibility */
-    border: solid red;
-    margin-bottom: 5px;
-    background-color: #ffeaea; /* Light red background for better visual separation */
-}
-
-/* --- MEDIA QUERY MODIFICATION --- */
 @media only screen and (max-width:750px) {
-    /* 1. Reset the display: none for the container we want to use */
-    .desktop {
-    display: none;
-}
-.mobile {
-    display: block;
-}
-    
-    .square { 
-        display: block !important; /* Force the main square to be visible */
-        float: none; /* Ensure it takes up full width if it was a float */
-        width: 100%; /* Ensure it's full width */
-        height: auto; /* Let the height be determined by the inner content */
-        border: none; /* Remove the outer red border for the container if needed, or keep it. I'll remove it here to only show the inner red border. */
-        padding: 0;
+  .desktop{ display: none; }
+  .mobile{ display: block; }
+
+    /* A. Reset ALL Column and Float Behavior */
+    [class*="col-"] {
+        width: 100% !important; 
+        float: none !important;
+        display: block !important; 
+        padding: 0 !important; /* Remove any padding that might conflict */
     }
 
-    /* 2. Hide everything else as per your original intent */
-    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-        display: block; /* Important to override the float:left */
-        float: none; 
-        width: 100%; /* Force all columns to full width and stack */
-    }
-    
-    .inner50, .square66, .inner66, .bottomSquare, .bottomSquare1, .square2, .square3 {
-        display: none !important; /* Keep other elements hidden */
-    }
-
-    /* 3. Make the NEW containers visible and styled as requested */
-    .mobile-red-square {
+    /* B. GHOST the main layout wrappers */
+    /* This removes the visual space of the wrappers (col-2 square, col-10 square, mainSquare33)
+       so only the inner squares are visible and stacked neatly. */
+    .square, .mainSquare33, .square2, .square33, .square66, .bottomSquare {
         display: block !important;
-        /* The requested styling: 1 big red square */
-        border: solid red 5px; 
-        height: auto; /* Auto height based on content */
-        width: 90%; /* A bit of margin on the sides */
-        margin: 20px auto; /* Center it horizontally */
-        padding: 10px;
+        height: auto !important;
+        width: 100% !important; 
+        border: none !important; /* Remove red borders from wrappers */
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important; 
+    }
+    .square{ margin-top: 10px; width: auto; height: auto; } 
+    
+    /* Group ALL the final visual elements into one style block */
+    .square3,
+    .inner50, 
+    .inner66, 
+    .bottomSquare1 
+    {
+        display: block !important;
+        
+        /* Enforce Uniform Dimensions */
+        width: 90% !important; 
+        height: 70px !important; /* Fixed, uniform height for all inner boxes */
+        
+        /* Center and space them out */
+        margin: 10px auto !important; /* Uniform margin-top/bottom and centered */
+        
+        /* Ensure they have a consistent border */
+        border: solid red !important;
     }
 
-    .mobile-inner-box {
-        /* The requested styling: 4 small wide squares inside, under each other */
-        display: block !important;
-        width: 100%;
-        height: 50px; 
-        margin-bottom: 10px;
+    .square2 .square3, .bottomSquare1 {
+        margin-right: auto !important;
+        margin-left: auto !important;
     }
+
 }
+
