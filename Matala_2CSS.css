@@ -1,3 +1,6 @@
+.desktop {display: block; height: 100%;}
+.mobile{display: none;}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -6,7 +9,6 @@ html, body {
 * {
   box-sizing: border-box;
 }
-
 .col-1  { width: 8.33%; }
 .col-2  { width: 16.66%; }
 .col-3  { width: 25%; }
@@ -53,8 +55,7 @@ html, body {
 
 
 @media only screen and (max-width:750px) {
-  .desktop{ display: none; }
-  .mobile{ display: block; }
+ 
 
     /* A. Reset ALL Column and Float Behavior */
     [class*="col-"] {
@@ -68,14 +69,15 @@ html, body {
     /* This removes the visual space of the wrappers (col-2 square, col-10 square, mainSquare33)
        so only the inner squares are visible and stacked neatly. */
     .square, .mainSquare33, .square2, .square33, .square66, .bottomSquare {
-        display: block !important;
-        height: auto !important;
-        width: 100% !important; 
-        border: none !important; /* Remove red borders from wrappers */
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: visible !important; 
+        display: block ;
+        height: auto ;
+        width: 100% ; 
+        border: none ; /* Remove red borders from wrappers */
+        padding: 0 ;
+        margin: 0 ;
+        overflow: visible ; 
     }
+    .square{height: 100%; width: 100%; border: solid red;}
   
     /* Group ALL the final visual elements into one style block */
     .square3,
@@ -100,6 +102,9 @@ html, body {
         margin-right: auto !important;
         margin-left: auto !important;
     }
+     .desktop{display: none;}
+  .mobile{display: block;}
 
 }
+
 
