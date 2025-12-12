@@ -85,26 +85,27 @@ html, body {
     .inner66, 
     .bottomSquare1 
     {
-        display: block !important;
+        display: block ;
         
         /* Enforce Uniform Dimensions */
-        width: 90% !important; 
-        height: 70px !important; /* Fixed, uniform height for all inner boxes */
+        width: 90% ; 
+        height: 70px ; /* Fixed, uniform height for all inner boxes */
         
         /* Center and space them out */
-        margin: 10px auto !important; /* Uniform margin-top/bottom and centered */
+        margin: 10px auto ; /* Uniform margin-top/bottom and centered */
         
         /* Ensure they have a consistent border */
-        border: solid red !important;
+        border: solid red ;
     }
 
     .square2 .square3, .bottomSquare1 {
-        margin-right: auto !important;
-        margin-left: auto !important;
+        margin-right: auto ;
+        margin-left: auto ;
     }
      .desktop{display: none;}
   .mobile{display: block;}
 
 }
+
 
 
