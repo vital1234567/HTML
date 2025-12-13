@@ -64,15 +64,12 @@ html, body {
         display: block ;
         padding: 0;
     }
-
-    /* B. GHOST the main layout wrappers */
-    /* This removes the visual space of the wrappers (col-2 square, col-10 square, mainSquare33)
-       so only the inner squares are visible and stacked neatly. */
+/* B. Neutralize ALL box styles to prepare for stacking */
     .square, .mainSquare33, .square2, .square33, .square66, .bottomSquare {
         display: block ;
         height: auto ;
         width: 100% ; 
-        border: none ; /* Remove red borders from wrappers */
+        border: none ;
         padding: 0 ;
         margin: 0 ;
         overflow: visible ; 
@@ -106,6 +103,7 @@ html, body {
   .mobile{display: block;}
 
 }
+
 
 
 
